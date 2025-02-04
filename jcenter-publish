@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-./gradlew -v
-./gradlew clean
-./gradlew bintrayUpload

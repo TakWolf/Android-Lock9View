@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.takwolf.android.insetswidget.InsetsLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:isw_insetsType="statusBars|navigationBars"
+    app:isw_insetsColorTop="@color/app_primary_dark"
+    app:isw_insetsColorBottom="@android:color/white"
+    app:isw_insetsColorLeft="@android:color/white"
+    app:isw_insetsColorRight="@android:color/white">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:elevation="@dimen/app_bar_elevation"
+        android:background="@color/app_primary"
+        android:elevation="@dimen/toolbar_elevation"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:title="@string/android_l_style"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:navigationIcon="?homeAsUpIndicator" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.takwolf.android.lock9.Lock9View
+        <com.takwolf.android.lock9view.Lock9View
             android:id="@+id/lock_9_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,4 +44,4 @@
 
     </FrameLayout>
 
-</LinearLayout>
+</com.takwolf.android.insetswidget.InsetsLinearLayout>

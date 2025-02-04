@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <color name="color_primary">#ff607d8b</color>
-    <color name="color_primary_dark">#ff455a64</color>
-    <color name="color_accent">@color/color_primary</color>
-
-    <color name="red_light">#ffff4444</color>
-    <color name="blue_light">#ff33b5e5</color>
-
+    <color name="app_primary">#607D8B</color>
+    <color name="app_primary_dark">#455A64</color>
+    <color name="red_light">#FF4444</color>
+    <color name="blue_light">#33B5E5</color>
 </resources>
