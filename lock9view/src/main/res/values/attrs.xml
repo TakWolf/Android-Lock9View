@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <declare-styleable name="Lock9View">
         <attr name="lock9_nodeSrc" format="color|reference" />
         <attr name="lock9_nodeOnSrc" format="color|reference" />
@@ -15,5 +14,4 @@
         <attr name="lock9_enableVibrate" format="boolean" />
         <attr name="lock9_vibrateTime" format="integer" />
     </declare-styleable>
-
 </resources>

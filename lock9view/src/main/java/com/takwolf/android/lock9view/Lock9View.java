@@ -1,4 +1,4 @@
-package com.takwolf.android.lock9;
+package com.takwolf.android.lock9view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,18 +7,17 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Vibrator;
-import android.support.annotation.AttrRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.annotation.StyleRes;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+
+import androidx.annotation.AttrRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StyleRes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,7 +98,6 @@ public class Lock9View extends ViewGroup {
         init(context, attrs, defStyleAttr, 0);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public Lock9View(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr, @StyleRes int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs, defStyleAttr, defStyleRes);
@@ -183,7 +181,7 @@ public class Lock9View extends ViewGroup {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         if (changed) {
             if (nodeSize > 0) { // 如果设置nodeSize值，则将节点绘制在九等分区域中心
-                float areaWidth = (right - left) / 3;
+                float areaWidth = (right - left) / 3.0f;
                 for (int n = 0; n < 9; n++) {
                     NodeView node = (NodeView) getChildAt(n);
                     // 获取3*3宫格内坐标
@@ -226,7 +224,7 @@ public class Lock9View extends ViewGroup {
                 y = event.getY();
                 NodeView currentNode = getNodeAt(x, y);
                 if (currentNode != null && !currentNode.isHighLighted()) { // 碰触了新的未点亮节点
-                    if (nodeList.size() > 0) { // 之前有点亮的节点
+                    if (!nodeList.isEmpty()) { // 之前有点亮的节点
                         if (autoLink) { // 开启了中间节点自动连接
                             NodeView lastNode = nodeList.get(nodeList.size() - 1);
                             NodeView middleNode = getNodeBetween(lastNode, currentNode);
@@ -244,12 +242,12 @@ public class Lock9View extends ViewGroup {
                     handleOnNodeConnectedCallback();
                 }
                 // 有点亮的节点才重绘
-                if (nodeList.size() > 0) {
+                if (!nodeList.isEmpty()) {
                     invalidate();
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                if (nodeList.size() > 0) { // 有点亮的节点
+                if (!nodeList.isEmpty()) { // 有点亮的节点
                     // 手势完成
                     handleOnGestureFinishedCallback();
                     // 清除状态
@@ -301,7 +299,7 @@ public class Lock9View extends ViewGroup {
      * 系统绘制回调-主要绘制连线
      */
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(@NonNull Canvas canvas) {
         // 先绘制已有的连线
         for (int n = 1; n < nodeList.size(); n++) {
             NodeView firstNode = nodeList.get(n - 1);
@@ -309,7 +307,7 @@ public class Lock9View extends ViewGroup {
             canvas.drawLine(firstNode.getCenterX(), firstNode.getCenterY(), secondNode.getCenterX(), secondNode.getCenterY(), paint);
         }
         // 如果已经有点亮的点，则在点亮点和手指位置之间绘制连线
-        if (nodeList.size() > 0) {
+        if (!nodeList.isEmpty()) {
             NodeView lastNode = nodeList.get(nodeList.size() - 1);
             canvas.drawLine(lastNode.getCenterX(), lastNode.getCenterY(), x, y, paint);
         }
