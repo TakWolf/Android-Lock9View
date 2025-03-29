@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.takwolf.android.lock9view"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 21
