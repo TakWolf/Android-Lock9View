@@ -43,7 +43,7 @@ dependencies {
     app:lock9_vibrateTime="20" />
 ```
 
-![layout_1](docs/layout_1.png)
+![Layout 1](docs/layout_1.png)
 
 ### Layout Example 2
 
@@ -66,7 +66,7 @@ dependencies {
     app:lock9_vibrateTime="20" />
 ```
 
-![layout_2](docs/layout_2.png)
+![Layout 2](docs/layout_2.png)
 
 **PS :**
 
@@ -92,7 +92,7 @@ app:lock9_nodeOnAnim="@anim/node_on_2"
 
 ### AutoLink
 
-![auto_link](docs/auto_link.png)
+![Auto Link](docs/auto_link.png)
 
 ```
 app:lock9_autoLink="true" // default is false
